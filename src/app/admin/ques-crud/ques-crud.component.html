@@ -1,0 +1,187 @@
+
+<div class="container">
+<div class="card">
+    <div class="card-header">
+      Ques Workplace
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Hi Admin!</h5>
+      <p class="card-text">You can perform crud by clicking here here</p>
+      <a  class="btn btn-primary" (click)="onClick()">CRUD On Ques</a>
+    </div>
+    <div *ngIf="data1">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">QID</th>
+            <th scope="col">Question</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let q of quizService.Qns" >
+            <th scope="row">{{q.questionId}} </th>
+            <td >{{q.questionTitle}}  </td>
+            <td>
+            <button (click)="onUpdate(q)">Update</button></td>
+            <td>
+            <button  (click)="onDelete(q.questionId)">Delete</button></td>
+            
+          </tr>
+
+          <td>
+            <button  (click)="onAddQuestion()">Add New Question</button></td>
+</tbody>
+</table>
+
+
+
+
+<!--ON UPDATE-->
+<form *ngIf="data2">
+  <div class="form-group row">
+    <label for="userid" class="col-sm-2 col-form-label">Ques ID</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="userid" value="{{id}}" name="{{id}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-2 col-form-label">Title</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="title" value="{{title}}" [(ngModel)]="title"  name="{{title}}">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="option1" class="col-sm-2 col-form-label">Option 1</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="option1" value="{{questionOptions1}}" [(ngModel)]="questionOptions1"  name="{{questionOptions1}}">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="option2" class="col-sm-2 col-form-label">Option 2</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="option2" value="{{questionOptions2}}" [(ngModel)]="questionOptions2"  name="{{questionOptions2}}">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="option3" class="col-sm-2 col-form-label">Option 3</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="option3" value="{{questionOptions3}}" [(ngModel)]="questionOptions3"  name="{{questionOptions3}}">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="option1" class="col-sm-2 col-form-label">Option 4</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="option4" value="{{questionOptions4}}" [(ngModel)]="questionOptions4"  name="{{questionOptions4}}">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="questionAnswer" class="col-sm-2 col-form-label">Answer</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="questionAnswer" value="{{questionAnswer}}" [(ngModel)]="questionAnswer"  name="{{questionAnswer}}">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="questionMarks" class="col-sm-2 col-form-label">Marks</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="questionMarks" value="{{questionMarks}}" [(ngModel)]="questionMarks"  name="{{questionMarks}}">
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="onDone()">Done!</button>
+
+</form>
+</div>
+    </div>
+
+<!--ON ADD-->
+
+
+    <form *ngIf="data3">
+      <div class="form-group row">
+        <label for="userid" class="col-sm-2 col-form-label">User ID</label>
+        <div class="col-sm-10">
+          <input type="text"  class="form-control-plaintext" id="userid" [(ngModel)]="id" name="id">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="title"  [(ngModel)]="title"  name="title">
+        </div>
+      </div>
+    
+      <div class="form-group row">
+        <label for="option1" class="col-sm-2 col-form-label">Option 1</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="option1" [(ngModel)]="questionOptions1"  name="questionOptions1">
+        </div>
+      </div>
+    
+      <div class="form-group row">
+        <label for="option2" class="col-sm-2 col-form-label">Option 2</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="option2"  [(ngModel)]="questionOptions2"  name="questionOptions2">
+        </div>
+      </div>
+    
+    
+      <div class="form-group row">
+        <label for="option3" class="col-sm-2 col-form-label">Option 3</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="option3"  [(ngModel)]="questionOptions3"  name="questionOptions3">
+        </div>
+      </div>
+    
+    
+      <div class="form-group row">
+        <label for="option1" class="col-sm-2 col-form-label">Option 4</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="option4"  [(ngModel)]="questionOptions4"  name="questionOptions4">
+        </div>
+      </div>
+    
+    
+      <div class="form-group row">
+        <label for="questionAnswer" class="col-sm-2 col-form-label">Answer</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="questionAnswer"  [(ngModel)]="questionAnswer"  name="questionAnswer">
+        </div>
+      </div>
+    
+    
+      <div class="form-group row">
+        <label for="questionMarks" class="col-sm-2 col-form-label">Marks</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="questionMarks"  [(ngModel)]="questionMarks"  name="questionMarks">
+        </div>
+      </div>
+
+      
+      <div class="form-group row">
+        <label for="questionMarks" class="col-sm-2 col-form-label">TestId In which you want to add</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="TestId"  [(ngModel)]="TestId"  name="TestId">
+        </div>
+      </div>
+
+
+      <button type="button" class="btn btn-primary" (click)="onAdd()">Add!</button>
+    
+    </form>
+
+
+  </div>  
+

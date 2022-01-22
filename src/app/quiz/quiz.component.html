@@ -1,0 +1,27 @@
+
+<app-navbar></app-navbar>
+<div class="container">
+<div class="row" *ngIf="this.quizService.Qns">
+     <span>Time Elapsed : {{quizService.displayTimeTaken()}}</span>
+<div class="card" style="width: 100%">
+     <div class="card-header">
+          {{quizService.qnProgress+1}}
+          {{quizService.Qns[quizService.qnProgress].questionTitle}}
+       
+     </div>
+     <ul class="list-group list-group-flush">
+       <button type="button" class="list-group-item btn btn-info" style="text-align: left; color: black;" 
+       *ngFor="let option of quizService.Qns[quizService.qnProgress].questionOptions;let i=index "
+       (click)="Answer(quizService.Qns[quizService.qnProgress].questionAnswer,i)"
+       >
+          {{option}}
+       </button>
+     
+     </ul>
+   </div>
+</div>
+<br>
+<div class="progress" style="height: 5px;">
+     <div class="progress-bar" role="progressbar" [style.width.%]=(quizService.qnProgress+1)*20 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+   </div>
+</div>
